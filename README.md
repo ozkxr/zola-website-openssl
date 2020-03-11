@@ -25,7 +25,7 @@ This repo also comes with a temporary solution, as it might lead to a better sol
 - Rename `now.json.bak` to `now.json` and `build.sh.bak` to `build.sh`.
 - Run `now`
 
-This should result in a successful build.
+This should results in a successful build.
 
 This configuration retrieves, builds and installs OpenSSL 1.1.0 using the release from the OpenSSL's GitHub.
 
