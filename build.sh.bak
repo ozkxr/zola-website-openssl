@@ -1,0 +1,30 @@
+# First, we need wget
+yum clean all
+yum install -y wget
+
+# Install OpenSSL 1.1.0
+## Get OpenSSL 1.1.0, build it and install it
+wget -q https://github.com/openssl/openssl/archive/OpenSSL_1_1_0l.tar.gz
+tar -xzf OpenSSL_1_1_0l.tar.gz
+cd openssl-OpenSSL_1_1_0l
+./config
+make
+make test
+make install
+
+## Append /usr/local/lib64 to /etc/ld.so.conf.d/local.conf
+echo "/usr/local/lib64" >> /etc/ld.so.conf.d/local.conf
+## Run ldconfig to make update the dynamic linker
+/sbin/ldconfig
+
+## Get back to the main working dir
+cd ..
+
+# Let's get the static site generator 
+wget -q https://github.com/getzola/zola/releases/download/v0.10.0/zola-v0.10.0-x86_64-unknown-linux-gnu.tar.gz
+tar -xvzf zola-v0.10.0-x86_64-unknown-linux-gnu.tar.gz
+
+# Build it
+./zola build
+
+
